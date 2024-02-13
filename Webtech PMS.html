@@ -6,12 +6,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-    	    margin: 0;
-    	    /*background-image: url('istockphoto-182436815-1024x1024.jpg');
-      	    background-size: cover;
-    	    background-position: center;
-   	        background-repeat: no-repeat;
-            */
+            margin: 0;
             background-color: grey;
         }
 
@@ -52,7 +47,7 @@
             float: relative;
             width: 90px;
             height: auto;
-            margin-left: -1200px;
+            margin-left: -1400px;
             margin-top: -10px;
 
         }
@@ -64,7 +59,7 @@
             color: #000000;
             box-sizing: border-box;
             text-align: center;
-            border: 2px solid #000; /* Black border */
+            border: 2px solid #000; 
         }
 
         .scrolling-text {
@@ -90,7 +85,7 @@
             border: none;
             border-radius: 8px;
             margin: 10px;
-            border: 2px solid #000; /* Black outline */
+            border: 2px solid #000; 
             border-radius: 8px;
         }
 
@@ -171,26 +166,61 @@
             margin-top: 10px;
         }
 
-        .category-buttons button {
-            padding: 10px 20px;
-            background-color: #555;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            flex: 1;
-            max-width: calc(25% - 20px);
-        }
-
-        .category-buttons button:hover {
-            background-color: lightblue;
-        }
-
-        .classified-projects-heading {
-            font-size: 24px;
-            margin-top: 20px;
+        .category {
             text-align: center;
+            width: 300px; /* Adjust the width as needed */
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+            flex: 1 0 calc(30% - 10px); /* 4 subjects in a row */
+            margin-bottom: 40px; /* Space between rows */
+        }
+
+        .category:hover {
+            transform: scale(1.05);
+        }
+
+        .category img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .category:hover img {
+            transform: scale(1.2);
+        }
+
+        .category-name {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px 0;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .category:hover .category-name {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .category-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Style for the heading */
+        .classified-projects-heading {
+            text-align: center; /* Align the heading to the center */
+            margin-top: 30px; /* Add some top margin for spacing */
         }
     </style>
 </head>
@@ -202,7 +232,6 @@
             <a class="active" href="#">Home</a>
             <a href="#">Upload</a>
             <a href="#">About</a>
-    
         </div>
         <div class="logo-container">
             <img src="upes_logo1.jpg" alt="UPES Logo">
@@ -211,26 +240,26 @@
 
     <div class="scrolling-text-container">
         <div class="scrolling-text">
-            <marquee behavior="scroll" direction="left" scrollamount="8"><b>WELCOME! to this PMS website    </b></marquee>
+            <marquee behavior="scroll" direction="left" scrollamount="8"><b>WELCOME! to this PMS website </b></marquee>
         </div>
     </div>
 
-        <button class="toggle-button" onclick="toggleSidebar()">☰ Menu</button>
-    </div>
+    <!-- Updated heading alignment here -->
     <div class="classified-projects-heading">
-        <h1>UPES Projects</h1> 
+        <h1>UPES Projects</h1>
     </div>
+
     <div class="search-bar">
         <select>
             <option value="">Select the School</option>
             <option value="option1">SCHOOL OF COMPUTER SCIENCE</option>
             <option value="option2">SCHOOL OF ENGINEERING</option>
-            <option value="option2">SCHOOL OF LAW</option>
-            <option value="option2">SCHOOL OF DESIGN</option>
-            <option value="option2">SCHOOL OF MANAGEMENT</option>
-            <option value="option2">SCHOOL OF HEALTH SCIENCE</option>
-            <option value="option2">SCHOOL OF LIBERAL STUDIES</option>
-            <option value="option2">SCHOOL OF MEDIA</option>
+            <option value="option3">SCHOOL OF LAW</option>
+            <option value="option4">SCHOOL OF DESIGN</option>
+            <option value="option5">SCHOOL OF MANAGEMENT</option>
+            <option value="option6">SCHOOL OF HEALTH SCIENCE</option>
+            <option value="option7">SCHOOL OF LIBERAL STUDIES</option>
+            <option value="option8">SCHOOL OF MEDIA</option>
         </select>
         <input type="text" placeholder="Search">
         <button>Search</button>
@@ -238,16 +267,54 @@
     <div class="project-categories">
         <h2>Project Categories</h2>
         <div class="category-buttons">
-            <button>COMPUTER SCIENCE</button>
-            <button>ENGINEERING</button>
-            <button>LAW</button>
-            <button>DESIGN</button>
-        </div>
-        <div class="category-buttons">
-            <button>MANAGEMENT</button>
-            <button>HEALTH SCIENCE</button>
-            <button>LIBERAL STUDIES</button>
-            <button>MEDIA</button>
+            <button class="category-button" onclick="window.location.href='computer_science.html'">
+                <div class="category">
+                    <img src="cs_image.jpg" alt="Computer Science">
+                    <span class="category-name">COMPUTER SCIENCE</span>
+                </div>
+            </button>
+            <button class="category-button" onclick="window.location.href='engineering.html'">
+                <div class="category">
+                    <img src="eng_image.jpg" alt="Engineering">
+                    <span class="category-name">ENGINEERING</span>
+                </div>
+            </button>
+            <button class="category-button" onclick="window.location.href='law.html'">
+                <div class="category">
+                    <img src="law_image.jpg" alt="LAW">
+                    <span class="category-name">LAW</span>
+                </div>
+            </button>
+            <button class="category-button" onclick="window.location.href='design.html'">
+                <div class="category">
+                    <img src="ds_image.jpg" alt="Design">
+                    <span class="category-name">DESIGN</span>
+                </div>
+            </button>
+            <button class="category-button" onclick="window.location.href='management.html'">
+                <div class="category">
+                    <img src="mg_image.jpg" alt="Management">
+                    <span class="category-name">Management</span>
+                </div>
+            </button>
+            <button class="category-button" onclick="window.location.href='healthscience.html'">
+                <div class="category">
+                    <img src="hs_image.jpg" alt="Health Science">
+                    <span class="category-name">HEALTH SCIENCE</span>
+                </div>
+            </button>
+            <button class="category-button" onclick="window.location.href='liberalstudies.html'">
+                <div class="category">
+                    <img src="ls_image.jpg" alt="Liberal Studies">
+                    <span class="category-name">LIBERAL STUDIES</span>
+                </div>
+            </button>
+            <button class="category-button" onclick="window.location.href='media.html'">
+                <div class="category">
+                    <img src="m_image.jpg" alt="Media">
+                    <span class="category-name">MEDIA</span>
+                </div>
+            </button>
         </div>
     </div>
     <div class="sidebar" id="sidebar">
@@ -268,4 +335,5 @@
         }
     </script>
 </body>
+
 </html>
