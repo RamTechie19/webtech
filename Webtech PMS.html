@@ -59,7 +59,7 @@
             color: #000000;
             box-sizing: border-box;
             text-align: center;
-            border: 2px solid #000; 
+            border: 2px solid #000;
         }
 
         .scrolling-text {
@@ -85,7 +85,7 @@
             border: none;
             border-radius: 8px;
             margin: 10px;
-            border: 2px solid #000; 
+            border: 2px solid #000;
             border-radius: 8px;
         }
 
@@ -153,30 +153,39 @@
             font-size: 16px;
         }
 
+        .project-categories-container {
+            background-image: url('e_img.jpg');
+            background-size: cover;
+            padding: 20px;
+        }
+
         .project-categories {
             text-align: center;
-            margin-top: 20px;
         }
 
-        .category-buttons {
+        .category-buttons-container {
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-around;
-            gap: 10px;
-            margin-top: 10px;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        
+        .category-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+
         .category {
             text-align: center;
-            width: 400px; 
+            width: 400px;
             position: relative;
             overflow: hidden;
             border-radius: 5px;
             box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s;
-            flex: 1 0 calc(30% - 10px); 
-            margin-bottom: 40px; 
+            margin-bottom: 40px;
         }
 
         .category:hover {
@@ -185,7 +194,10 @@
 
         .category img {
             width: 100%;
-            height: auto;
+            height: 200px;
+            /* Equal height for all images */
+            object-fit: cover;
+            /* Maintain aspect ratio */
             border-radius: 5px;
             transition: transform 0.3s;
         }
@@ -211,17 +223,9 @@
             background-color: rgba(0, 0, 0, 0.8);
         }
 
-        .category-button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            outline: none;
-        }
-
-        
         .classified-projects-heading {
-            text-align: center; 
-            margin-top: 30px; 
+            text-align: center;
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -245,77 +249,78 @@
         </div>
     </div>
 
+    <div class="project-categories-container">
+        <div class="project-categories">
+            <div class="classified-projects-heading">
+                <h1>UPES Projects</h1>
+            </div>
 
-    <div class="classified-projects-heading">
-        <h1>UPES Projects</h1>
-    </div>
+            <div class="search-bar">
+                <select>
+                    <option value="">Select the School</option>
+                    <option value="option1">SCHOOL OF COMPUTER SCIENCE</option>
+                    <option value="option2">SCHOOL OF ENGINEERING</option>
+                    <option value="option3">SCHOOL OF LAW</option>
+                    <option value="option4">SCHOOL OF DESIGN</option>
+                    <option value="option5">SCHOOL OF MANAGEMENT</option>
+                    <option value="option6">SCHOOL OF HEALTH SCIENCE</option>
+                    <option value="option7">SCHOOL OF LIBERAL STUDIES</option>
+                    <option value="option8">SCHOOL OF MEDIA</option>
+                </select>
+                <input type="text" placeholder="Search">
+                <button>Search</button>
+            </div>
 
-    <div class="search-bar">
-        <select>
-            <option value="">Select the School</option>
-            <option value="option1">SCHOOL OF COMPUTER SCIENCE</option>
-            <option value="option2">SCHOOL OF ENGINEERING</option>
-            <option value="option3">SCHOOL OF LAW</option>
-            <option value="option4">SCHOOL OF DESIGN</option>
-            <option value="option5">SCHOOL OF MANAGEMENT</option>
-            <option value="option6">SCHOOL OF HEALTH SCIENCE</option>
-            <option value="option7">SCHOOL OF LIBERAL STUDIES</option>
-            <option value="option8">SCHOOL OF MEDIA</option>
-        </select>
-        <input type="text" placeholder="Search">
-        <button>Search</button>
-    </div>
-    <div class="project-categories">
-        <h2>Project Categories</h2>
-        <div class="category-buttons">
-            <button class="category-button" onclick="window.location.href='computer_science.html'">
-                <div class="category">
-                    <img src="cs_image.jpg" alt="Computer Science">
-                    <span class="category-name">COMPUTER SCIENCE</span>
-                </div>
-            </button>
-            <button class="category-button" onclick="window.location.href='engineering.html'">
-                <div class="category">
-                    <img src="eng_image.jpg" alt="Engineering">
-                    <span class="category-name">ENGINEERING</span>
-                </div>
-            </button>
-            <button class="category-button" onclick="window.location.href='law.html'">
-                <div class="category">
-                    <img src="law_image.jpg" alt="LAW">
-                    <span class="category-name">LAW</span>
-                </div>
-            </button>
-            <button class="category-button" onclick="window.location.href='design.html'">
-                <div class="category">
-                    <img src="ds_image.jpg" alt="Design">
-                    <span class="category-name">DESIGN</span>
-                </div>
-            </button>
-            <button class="category-button" onclick="window.location.href='management.html'">
-                <div class="category">
-                    <img src="mg_image.jpg" alt="Management">
-                    <span class="category-name">Management</span>
-                </div>
-            </button>
-            <button class="category-button" onclick="window.location.href='healthscience.html'">
-                <div class="category">
-                    <img src="hs_image.jpg" alt="Health Science">
-                    <span class="category-name">HEALTH SCIENCE</span>
-                </div>
-            </button>
-            <button class="category-button" onclick="window.location.href='liberalstudies.html'">
-                <div class="category">
-                    <img src="ls_image.jpg" alt="Liberal Studies">
-                    <span class="category-name">LIBERAL STUDIES</span>
-                </div>
-            </button>
-            <button class="category-button" onclick="window.location.href='media.html'">
-                <div class="category">
-                    <img src="m_image.jpg" alt="Media">
-                    <span class="category-name">MEDIA</span>
-                </div>
-            </button>
+            <div class="category-buttons-container">
+                <button class="category-button" onclick="window.location.href='computer_science.html'">
+                    <div class="category">
+                        <img src="cs_image.jpg" alt="Computer Science">
+                        <span class="category-name">COMPUTER SCIENCE</span>
+                    </div>
+                </button>
+                <button class="category-button" onclick="window.location.href='engineering.html'">
+                    <div class="category">
+                        <img src="eng_image.jpg" alt="Engineering">
+                        <span class="category-name">ENGINEERING</span>
+                    </div>
+                </button>
+                <button class="category-button" onclick="window.location.href='law.html'">
+                    <div class="category">
+                        <img src="law_image.jpg" alt="LAW">
+                        <span class="category-name">LAW</span>
+                    </div>
+                </button>
+                <button class="category-button" onclick="window.location.href='design.html'">
+                    <div class="category">
+                        <img src="ds_image.jpg" alt="Design">
+                        <span class="category-name">DESIGN</span>
+                    </div>
+                </button>
+                <button class="category-button" onclick="window.location.href='management.html'">
+                    <div class="category">
+                        <img src="mg_image.jpg" alt="Management">
+                        <span class="category-name">Management</span>
+                    </div>
+                </button>
+                <button class="category-button" onclick="window.location.href='healthscience.html'">
+                    <div class="category">
+                        <img src="hs_image.jpg" alt="Health Science">
+                        <span class="category-name">HEALTH SCIENCE</span>
+                    </div>
+                </button>
+                <button class="category-button" onclick="window.location.href='liberalstudies.html'">
+                    <div class="category">
+                        <img src="ls_image.jpg" alt="Liberal Studies">
+                        <span class="category-name">LIBERAL STUDIES</span>
+                    </div>
+                </button>
+                <button class="category-button" onclick="window.location.href='media.html'">
+                    <div class="category">
+                        <img src="m_image.jpg" alt="Media">
+                        <span class="category-name">MEDIA</span>
+                    </div>
+                </button>
+            </div>
         </div>
     </div>
     <div class="sidebar" id="sidebar">
