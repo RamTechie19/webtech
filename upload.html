@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="uploadApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .form-container input[type="text"],
+        .form-container input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .form-container input[type="file"] {
+            margin-bottom: 10px;
+        }
+        .form-container input[type="submit"] {
+            background-color: #555;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #777;
+        }
+        .form-container input[type="submit"]:active {
+            background-color: #888;
+        }
+        .text-danger {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container" ng-controller="UploadController">
+        <h2>Upload Project</h2>
+        <form id="uploadForm" name="uploadForm" ng-submit="submitForm()" novalidate>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" ng-model="formData.name" required>
+
+            <div ng-show="uploadForm.name.$invalid && (uploadForm.name.$dirty || uploadForm.$submitted)">
+                <span class="text-danger" ng-show="uploadForm.name.$error.required">Name is required.</span>
+            </div>
+
+            <label for="projectName">Project Name:</label>
+            <input type="text" id="projectName" name="projectName" ng-model="formData.projectName" required>
+
+            <div ng-show="uploadForm.projectName.$invalid && (uploadForm.projectName.$dirty || uploadForm.$submitted)">
+                <span class="text-danger" ng-show="uploadForm.projectName.$error.required">Project Name is required.</span>
+            </div>
+
+            <label for="description">Project Description:</label>
+            <textarea id="description" name="description" rows="4" ng-model="formData.description" required></textarea>
+
+            <div ng-show="uploadForm.description.$invalid && (uploadForm.description.$dirty || uploadForm.$submitted)">
+                <span class="text-danger" ng-show="uploadForm.description.$error.required">Project Description is required.</span>
+            </div>
+
+            <label for="collegeId">College ID:</label>
+            <input type="text" id="collegeId" name="collegeId" ng-model="formData.collegeId" required>
+
+            <div ng-show="uploadForm.collegeId.$invalid && (uploadForm.collegeId.$dirty || uploadForm.$submitted)">
+                <span class="text-danger" ng-show="uploadForm.collegeId.$error.required">College ID is required.</span>
+            </div>
+
+            <label for="studyYear">Year of Study:</label>
+            <input type="number" id="studyYear" name="studyYear" ng-model="formData.studyYear" required>
+
+            <div ng-show="uploadForm.studyYear.$invalid && (uploadForm.studyYear.$dirty || uploadForm.$submitted)">
+                <span class="text-danger" ng-show="uploadForm.studyYear.$error.required">Year of Study is required.</span>
+            </div>
+
+            <label for="school">School:</label>
+            <select id="school" name="school" ng-model="formData.school" required>
+                <option value="select">Select School</option>
+                <option value="computer_science">Computer Science</option>
+                <option value="engineering">Engineering</option>
+                <option value="law">Law</option>
+                <option value="design">Design</option>
+                <option value="management">Management</option>
+                <option value="health_science">Health Science</option>
+                <option value="liberal_studies">Liberal Studies</option>
+                <option value="media">Media</option>
+            </select>
+
+            <div ng-show="uploadForm.school.$invalid && (uploadForm.school.$dirty || uploadForm.$submitted)">
+                <span class="text-danger" ng-show="uploadForm.school.$error.required">School is required.</span>
+            </div>
+
+            <label for="category">Category:</label>
+            <select id="category" name="category" ng-model="formData.category" required>
+                <option value="select">SELECT</option>
+                <option value="minor1">Minor 1</option>
+                <option value="minor2">Minor 2</option>
+                <option value="major1">Major 1</option>
+                <option value="major2">Major 2</option>
+            </select>
+
+            <div ng-show="uploadForm.category.$invalid && (uploadForm.category.$dirty || uploadForm.$submitted)">
+                <span class="text-danger" ng-show="uploadForm.category.$error.required">Category is required.</span>
+            </div>
+
+            <label for="report">Report (PDF):</label>
+            <input type="file" id="report" name="report" accept=".pdf" ng-model="formData.report" required>
+
+            <div ng-show="uploadForm.report.$invalid && (uploadForm.report.$dirty || uploadForm.$submitted)">
+                <span class="text-danger" ng-show="uploadForm.report.$error.required">Report (PDF) is required.</span>
+            </div>
+
+            <label for="presentation">Presentation (PPT/PPTX):</label>
+            <input type="file" id="presentation" name="presentation" accept=".ppt, .pptx" ng-model="formData.presentation" required>
+
+            <div ng-show="uploadForm.presentation.$invalid && (uploadForm.presentation.$dirty || uploadForm.$submitted)">
+                <span class="text-danger" ng-show="uploadForm.presentation.$error.required">Presentation (PPT/PPTX) is required.</span>
+            </div>
+
+            <label for="sourceCode">Source Code (ZIP):</label>
+            <input type="file" id="sourceCode" name="sourceCode" accept=".zip" ng-model="formData.sourceCode" required>
+
+            <div ng-show="uploadForm.sourceCode.$invalid && (uploadForm.sourceCode.$dirty || uploadForm.$submitted)">
+                <span class="text-danger" ng-show="uploadForm.sourceCode.$error.required">Source Code (ZIP) is required.</span>
+            </div>
+
+            <input type="submit" value="Submit" ng-disabled="uploadForm.$invalid">
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+    <script>
+        angular.module('uploadApp', [])
+            .controller('UploadController', ['$scope', function($scope) {
+                $scope.formData = {};
+
+                $scope.submitForm = function() {
+                    if ($scope.uploadForm.$valid) {
+                        console.log('Form submitted with data:', $scope.formData);
+                    } else {
+                        console.error('Form is invalid. Please check all fields.');
+                    }
+                };
+            }]);
+    </script>
+</body>
+</html>
