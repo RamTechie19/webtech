@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #191414;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .content {
+            text-align: left;
+            padding: 20px;
+            max-width: 800px;
+            width: 100%;
+            margin-right: 20px;
+        }
+
+        .login-container {
+            background-color: lightblue; /* Changed color */
+            border-radius: 8px;
+            padding: 30px; /* Increased padding */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 450px; /* Increased max-width */
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #191414;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #333333;
+            color: #ffffff;
+        }
+
+        input::placeholder {
+            color: #999999;
+        }
+
+        button {
+            background-color: #0000;
+            color: #4CAF50; /* Changed color */
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ffffff;
+            color: #25a55e;
+        }
+
+        .links {
+            margin-top: 15px;
+            color: #555555;
+            font-size: 14px;
+        }
+
+        .links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .logo {
+            margin-bottom: 40px;
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="logo">
+            <!-- Your logo here -->
+        </div>
+        <h1>Welcome to Project Management System</h1>
+        <p>The project management system facilitates the organization and management of minor projects undertaken by seniors. It encompasses a database housing project data, enabling users to access information regarding ongoing projects, submitted reports, and associated presentations (PPTs). This system enhances project visibility and streamlines the process of tracking project progress and deliverables.</p>
+    </div>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="username" style="color: #191414;">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password" style="color: #191414;">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="redirect()" style="color: black;">Login</button>
+            </div>
+        </form>
+        <div class="links">
+            <a href="#">Forgot Password?</a>
+            <span>|</span>
+            <a href="/Signup">Sign Up</a>
+        </div>
+    </div>
+
+    <script>
+        function redirect() {
+            alert("Redirecting to PMS Portal...");
+            window.location.href = '/WebtechPMS';
+        }
+    </script>
+</body>
+
+</html>

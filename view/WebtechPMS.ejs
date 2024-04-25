@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html ng-app="ProjectApp">
+
+<head>
+    <title>Project Management System</title>
+    <link rel="stylesheet" href="./styles1.css">
+    <style>
+        .notifications-popup {
+            position: fixed;
+            top: 50px; 
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 10px 20px;
+            transition: opacity 0.3s;
+            opacity: 0;
+        }
+
+        .notifications-popup.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body ng-controller="ProjectController">
+    <div class="upper-bar">
+        <div class="buttons-container">
+            <button class="toggle-button" ng-click="toggleSidebar()">☰ Menu</button>
+            <a class="active" href="#">Home</a>
+            <a href="/uploadd">Upload</a>
+            <a href="#">About</a>
+        </div>
+        <div class="logo-container">
+            <img src="./upes_logo.jpg" alt="UPES Logo">
+        </div>
+    </div>
+
+    <div class="notifications-popup" ng-class="{ 'show': notifications.length }">
+        <div class="notification" ng-repeat="notification in notifications">
+            {{ notification.message }}
+        </div>
+    </div>
+
+    <div class="scrolling-text-container">
+        <div class="scrolling-text">
+            <marquee behavior="scroll" direction="left" scrollamount="8"><b>WELCOME! to this PMS website </b></marquee>
+        </div>
+    </div>
+
+    <div class="classified-projects-heading">
+        <h1 style="font-size: 64px; color: #000;">UPES Projects</h1>
+    </div>
+
+    <div class="search-bar">
+        <select>
+            <option value="">Select the School</option>
+            <option value="Computer Science">SCHOOL OF COMPUTER SCIENCE</option>
+            <option value="Engineering">SCHOOL OF ENGINEERING</option>
+            <option value="Law">SCHOOL OF LAW</option>
+            <option value="Design">SCHOOL OF DESIGN</option>
+            <option value="Management">SCHOOL OF MANAGEMENT</option>
+            <option value="Health Science">SCHOOL OF HEALTH SCIENCE</option>
+            <option value="Liberal Studies">SCHOOL OF LIBERAL STUDIES</option>
+            <option value="Media">SCHOOL OF MEDIA</option>
+        </select>
+        <input type="text" placeholder="Search">
+        <button>Search</button>
+    </div>
+
+    <div class="project-categories">
+        <h2 style="font-size: 30px; color: #000;">Project Categories</h2>
+        <div class="project-categories">
+            <div class="category-buttons">
+                <button class="category-button" ng-click="showNotification('Computer Science selected')" onclick="setTimeout(function(){window.location.href='/cs';}, 2000);">
+                    <div class="category">
+                        <img src="./cs_image.jpg" alt="Computer Science">
+                        <span class="category-name">COMPUTER SCIENCE</span>
+                    </div>
+                </button>
+                <button class="category-button" ng-click="showNotification('Engineering selected')" onclick="setTimeout(function(){window.location.href='/engi';}, 2000);">
+                    <div class="category">
+                        <img src="./eng_image.jpg" alt="Engineering">
+                        <span class="category-name">ENGINEERING</span>
+                    </div>
+                </button>
+                <button class="category-button" ng-click="showNotification('Law selected')" onclick="setTimeout(function(){window.location.href='/law';}, 2000);">
+                    <div class="category">
+                        <img src="./law_image.jpg" alt="Law">
+                        <span class="category-name">LAW</span>
+                    </div>
+                </button>
+                <button class="category-button" ng-click="showNotification('Design selected')" onclick="setTimeout(function(){window.location.href='/des';}, 2000);">
+                    <div class="category">
+                        <img src="./ds_image.jpg" alt="Design">
+                        <span class="category-name">DESIGN</span>
+                    </div>
+                </button>
+                <button class="category-button" ng-click="showNotification('Management selected')" onclick="setTimeout(function(){window.location.href='/manag';}, 2000);">
+                    <div class="category">
+                        <img src="./mg_image.jpg" alt="Management">
+                        <span class="category-name">MANAGEMENT</span>
+                    </div>
+                </button>
+                <button class="category-button" ng-click="showNotification('Health Science selected')" onclick="setTimeout(function(){window.location.href='/hs';}, 2000);">
+                    <div class="category">
+                        <img src="./hs_image.jpg" alt="Health Science">
+                        <span class="category-name">
+
+HEALTH SCIENCE</span>
+                    </div>
+                </button>
+                <button class="category-button" ng-click="showNotification('Liberal Studies selected')" onclick="setTimeout(function(){window.location.href='/lbs';}, 2000);">
+                    <div class="category">
+                        <img src="./ls_image.jpg" alt="Liberal Studies">
+                        <span class="category-name">LIBERAL STUDIES</span>
+                    </div>
+                </button>
+                <button class="category-button" ng-click="showNotification('Media selected')" onclick="setTimeout(function(){window.location.href='/media';}, 2000);">
+                    <div class="category">
+                        <img src="./m_image.jpg" alt="Media">
+                        <span class="category-name">MEDIA</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <a href="#">Profile Info</a>
+        <a href="#">Profile Info</a>
+        <a href="#">Feedback</a>
+        <a href="#">Contact Us</a>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        angular.module('ProjectApp', [])
+            .controller('ProjectController', function ($scope, $timeout) {
+                $scope.notifications = [];
+
+                $scope.showNotification = function (message) {
+                    $scope.notifications.push({ message: message });
+                    $timeout(function () {
+                        $scope.removeNotification($scope.notifications[0]);
+                    }, 3000);
+                };
+
+                $scope.removeNotification = function (notification) {
+                    var index = $scope.notifications.indexOf(notification);
+                    if (index !== -1) {
+                        $scope.notifications.splice(index, 1);
+                    }
+                };
+
+                $scope.toggleSidebar = function () {
+                    const sidebar = document.getElementById('sidebar');
+                    if (sidebar.style.left === '-250px') {
+                        sidebar.style.left = '0';
+                    } else {
+                        sidebar.style.left = '-250px';
+                    }
+                };
+            });
+    </script>
+</body>
+
+</html>
